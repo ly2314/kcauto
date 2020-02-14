@@ -27,6 +27,8 @@ class FleetSwitcherCore(object):
 
     def _set_next_combat_preset(self):
         if len(cfg.config.combat.fleet_presets) > 0:
+            if not self.next_combat_preset:
+                self.next_combat_preset = choice(cfg.config.combat.fleet_presets)
             index = cfg.config.combat.fleet_presets.index(self.next_combat_preset) + 1
             if index == len(cfg.config.combat.fleet_presets):
                 index = 0
